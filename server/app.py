@@ -26,7 +26,11 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 # Allow React frontend to communicate with Flask
-CORS(app)
+CORS(
+    app,
+    resources={r"/*": {"origins": "https://pangisha-smarthouse-24vj-iota.vercel.app"}},
+    supports_credentials=True
+)
 
 # Initialize extensions
 db.init_app(app)
@@ -41,6 +45,25 @@ from models import *
 # Register blueprints
 app.register_blueprint(auth_bp)
 app.register_blueprint(properties_bp)
+app.register_blueprint(favorites_bp)
+app.register_blueprint(inquiries_bp)
+# Future blueprints
+# app.register_blueprint(favorites_bp)
+# app.register_blueprint(inquiries_bp)
+
+# Health check route
+@app.route("/")
+def home():
+    return {
+        "message": "Pangisha SmartHouse API is running"
+    }, 200
+
+
+if __name__ == "__main__":
+    app.run(
+        debug=True,
+        port=5555
+    )
 app.register_blueprint(favorites_bp)
 app.register_blueprint(inquiries_bp)
 # Future blueprints
