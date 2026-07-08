@@ -28,7 +28,14 @@ app.config.from_object(Config)
 # Allow React frontend to communicate with Flask
 CORS(
     app,
-    resources={r"/*": {"origins": "https://pangisha-smarthouse-24vj-iota.vercel.app"}},
+    resources={
+        r"/*": {
+            "origins": [
+                "http://localhost:5173",
+                "https://pangisha-smarthouse-client-koddf69m9-d-bengos-projects.vercel.app"
+            ]
+        }
+    },
     supports_credentials=True
 )
 
