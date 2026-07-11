@@ -71,22 +71,3 @@ if __name__ == "__main__":
         debug=True,
         port=5555
     )
-app.register_blueprint(favorites_bp)
-app.register_blueprint(inquiries_bp)
-# Future blueprints
-# app.register_blueprint(favorites_bp)
-# app.register_blueprint(inquiries_bp)
-
-# Health check route
-@app.route("/")
-def home():
-    return {
-        "message": "Pangisha SmartHouse API is running"
-    }, 200
-
-
-if __name__ == "__main__":
-    app.run(
-        debug=True,
-        port=5555
-    )
