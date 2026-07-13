@@ -146,6 +146,12 @@ Regards,
 Pangisha SmartHouse Team
 """
 
+    print("MAIL_USERNAME:", current_app.config.get("MAIL_USERNAME"))
+    print("MAIL_PASSWORD SET:", bool(current_app.config.get("MAIL_PASSWORD")))
+    print("MAIL_SERVER:", current_app.config.get("MAIL_SERVER"))
+    print("MAIL_PORT:", current_app.config.get("MAIL_PORT"))
+    print("FRONTEND_URL:", current_app.config.get("FRONTEND_URL"))
+
     mail.send(msg)
 
     return jsonify({
