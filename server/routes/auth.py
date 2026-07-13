@@ -152,7 +152,11 @@ Pangisha SmartHouse Team
     print("MAIL_PORT:", current_app.config.get("MAIL_PORT"))
     print("FRONTEND_URL:", current_app.config.get("FRONTEND_URL"))
 
-    mail.send(msg)
+    try:
+        mail.send(msg)
+    except Exception as e:
+        print(f"Mail error: {type(e).__name__}: {e}")
+        return jsonify({"error": str(e)}), 500
 
     return jsonify({
         "message": "If that email exists, a password reset link has been sent."
