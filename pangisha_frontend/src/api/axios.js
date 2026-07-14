@@ -5,9 +5,7 @@ const isLocalDevelopment =
   ["localhost", "127.0.0.1"].includes(window.location.hostname);
 
 const api = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL ||
-    (isLocalDevelopment ? "http://127.0.0.1:5555" : "https://pangisha-smarthouse-c7ek.onrender.com"),
+  baseURL: "http://127.0.0.1:5555",
   headers: {
     "Content-Type": "application/json",
   },
