@@ -10,7 +10,10 @@ export default function Register() {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
+=======
   
+>>>>>>> upstream/main
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -273,7 +276,74 @@ export default function Register() {
 
           </p>
 
+<<<<<<< HEAD
+            <div className="relative mt-1">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full border rounded-lg p-3 pr-12"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-blue-600"
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label className="font-medium">
+              Confirm Password
+            </label>
+
+            <div className="relative mt-1">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="w-full border rounded-lg p-3 pr-12"
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-blue-600"
+              >
+                {showConfirmPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
+          </div>
+
+          <button
+            disabled={loading}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg"
+          >
+            {loading
+              ? "Creating Account..."
+              : "Register"}
+          </button>
+
+        </form>
+
+        <p className="text-center mt-6">
+
+          Already have an account?
+
+          <Link
+            to="/login"
+            className="text-blue-600 font-semibold ml-2"
+          >
+            Login
+          </Link>
+
+        </p>
+=======
         </div>
+>>>>>>> upstream/main
 
       </div>
     </div>

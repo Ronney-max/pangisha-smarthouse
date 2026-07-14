@@ -9,5 +9,5 @@
 - npm install -D tailwindcss postcss autoprefixer
 
 ## API Used
-- https://dummyjson.com/products
+- https://pangisha-smarthouse.com
 

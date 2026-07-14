@@ -1,189 +1,179 @@
-## PANGANISHA SMART HOUSE
-- Pangisha Smart House is a modern property rental platform that enables landlords to list rental properties and tenants to discover available houses with ease. The application is built with a Flask REST API backend and a React frontend, providing a secure, responsive, and user-friendly experience.
+# Pangisha Smart House
 
----
+Pangisha Smart House is a full-stack property rental platform that helps landlords list properties and enables tenants to discover homes with ease. The application combines a Flask REST API backend with a React and Vite frontend to deliver a secure, responsive, and user-friendly experience.
+
+## Overview
+
+The platform supports:
+- user registration and login
+- property listing and management
+- image upload for properties
+- favorites and property inquiries
+- protected API access with JWT authentication
 
 ## Features
 
 ### Authentication
-- User registration
-- Secure login using JWT Authentication
-- Password hashing with Flask-Bcrypt
-- Protected API endpoints
+- secure user registration
+- login with JWT-based authentication
+- password hashing with Flask-Bcrypt
+- protected routes for authenticated users
 
 ### Property Management
-- Add new properties
-- Upload property images
-- View all available properties
-- View individual property details
-- Update property information
-- Delete properties
+- add new properties
+- view available listings
+- view detailed property information
+- update and delete property records
+- upload property images
 
-### Image Upload
-- Cloud image storage
-- Fast image delivery
-- Secure upload handling
+### User Experience
+- responsive and modern interface
+- navigation with React Router
+- interactive alerts with SweetAlert2
+- API integration with Axios
 
-### Frontend
-- Responsive user interface
-- React Router navigation
-- Property listing page
-- Property details page
-- Add Property form
-- SweetAlert notifications
-- Axios API integration
+## Tech Stack
 
----
-
-# Tech Stack
-
-## Backend
+### Backend
 - Python
 - Flask
-- Flask SQLAlchemy
-- Flask Migrate
-- Flask JWT Extended
-- Flask Marshmallow
-- Flask Bcrypt
-- PostgreSQL
+- Flask-SQLAlchemy
+- Flask-Migrate
+- Flask-JWT-Extended
+- Flask-Bcrypt
+- Flask-CORS
+- SQLite or PostgreSQL
 - Cloudinary
 
-## Frontend
+### Frontend
 - React
 - Vite
 - React Router DOM
 - Axios
+- Tailwind CSS
 - SweetAlert2
-- CSS
 
----
+## Project Structure
+
+```text
+pangisha-smarthouse/
+├── server/                 # Flask backend
+│   ├── app.py
+│   ├── config.py
+│   ├── extensions.py
+│   ├── models/
+│   ├── routes/
+│   ├── schemas/
+│   └── requirements.txt
+├── pangisha_frontend/      # React frontend
+│   ├── src/
+│   ├── public/
+│   └── package.json
+└── README.md
+```
+
+## Prerequisites
+
+Before you begin, make sure you have the following installed:
+- Python 3.10+
+- Node.js 18+
+- npm
 
 ## Installation
-## 1. Clone the Repository
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/pangisha-smarthouse.git
-```
-
-```bash
+git clone https://github.com/kalebu1960/pangisha-smarthouse.git
 cd pangisha-smarthouse
 ```
-- If you already cloned you can move to the next step.
----
 
-## 2. My team mates
-## a. git checkout main
-## b. git pull origin main
-- This will enable you to have the latest code.
-
-
-# 🚀 Backend Setup
-
-Navigate to the backend folder.
+### 2. Backend setup
 
 ```bash
 cd server
-```
-
-Create a virtual environment.
-
-
-Install dependencies.
-```bash
-pipenv install
-```
-- This is if your using pipenv
-
-```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
-- This is if your using pip
 
-## Create a `.env` file.
-- Create your secret key and the rest: 
+Create a file named `.env` inside the `server` folder with the following values:
 
-## 1. SECRET_KEY=your_secret_key
+```env
+SECRET_KEY=your_secret_key
+JWT_SECRET_KEY=your_jwt_secret
+DATABASE_URL=sqlite:///instance/pangisha-dev.db
 
-## Install postgres
-```bash
-sudo apt install postgresql postgresql-contrib
-```
-- Follow the steps, then after creating the password use the DATABASE_URL below: 
-
-## 2. DATABASE_URL=postgresql://username:password@localhost/pangisha_db
-
-## 3. JWT_SECRET_KEY=your_jwt_secret
-
-
-## 4. I have used a platform called cloudinary for images, so create an account for free, then follow the steps.
+# Optional for image uploads
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+```
 
+If you prefer PostgreSQL for development or production, use a PostgreSQL URL instead of the SQLite example above.
 
-## Database Migrations
-- After finishing setting up the backend, don't forget to run the migrations:
-## 1. flask db migrate -m ""
-## 2. flask db upgrade
+### 3. Run database migrations
 
-## Seed the database is optional
+```bash
+flask db upgrade
+```
+
+If you want sample data, you can optionally seed the database:
+
 ```bash
 python seed.py
 ```
 
-## Run the backend server
+### 4. Start the backend
+
 ```bash
 python3 app.py
 ```
-The backend will start on
 
-```
+The backend will run at:
+
+```text
 http://127.0.0.1:5555
 ```
 
----
+## Frontend setup
 
-
-
-#  Frontend Setup
-
-Open another terminal.
+Open a second terminal and run:
 
 ```bash
-cd frontend
-```
-
-Install dependencies.
-
-```bash
+cd pangisha_frontend
 npm install
-```
-
-Start the development server.
-
-```bash
 npm run dev
 ```
 
-The frontend will start on
+The frontend will run at:
 
-```
+```text
 http://localhost:5173
 ```
 
----
+If you want the frontend to target a different backend URL, create a `.env` file inside `pangisha_frontend` and set:
 
-
-# 🔐 Authentication
-
-After logging in successfully, the backend returns a JWT token.
-
-Store the token in localStorage.
-
-```javascript
-localStorage.setItem("token", token);
+```env
+VITE_API_URL=http://127.0.0.1:5555
 ```
 
-Axios automatically attaches the token to protected requests.
+## Running the app locally
 
----
+1. Start the backend from the `server` folder.
+2. Start the frontend from the `pangisha_frontend` folder.
+3. Open `http://localhost:5173` in your browser.
+
+## Authentication
+
+After a successful login, the backend returns a JWT token. The frontend stores it in local storage and attaches it automatically to protected requests.
+
+## DEPLOYMENT NOTES
+
+- `SECRET_KEY`
+- `JWT_SECRET_KEY`
+- `DATABASE_URL` with a PostgreSQL connection string
+
+## Contributing
+
+If you would like to contribute, please create a feature branch, make your changes, and open a pull request.
